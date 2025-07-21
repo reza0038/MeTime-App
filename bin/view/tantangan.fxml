@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.util.Duration?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.TantanganController"
+            prefWidth="774.0" prefHeight="728.0" stylesheets="@style.css">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <StackPane fx:id="contentStackPane" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+
+        <VBox fx:id="listTantanganPane" alignment="TOP_LEFT" spacing="15" styleClass="card-pane">
+            <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+            <Label text="Pilih Tantangan Mingguanmu" styleClass="label-title"/>
+            <Label text="Pilih tantangan di bawah untuk melihat detail atau memulai." styleClass="label-subtitle"/>
+
+            <ListView fx:id="tantanganListView" VBox.vgrow="ALWAYS" onMouseClicked="#handleSelectTantangan" styleClass="list-view"/>
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <Button fx:id="buatTantanganBaruButton" text="Buat Tantangan Baru" onAction="#handleBuatTantanganBaru" styleClass="button"/>
+                <Button text="Lihat Riwayat Tantangan" onAction="#handleLihatRiwayat" styleClass="button"/>
+            </HBox>
+            <Label fx:id="listMessageLabel" textFill="red" styleClass="label-message"/>
+        </VBox>
+
+        <VBox fx:id="detailTantanganPane" alignment="TOP_LEFT" spacing="15" visible="false" styleClass="card-pane">
+            <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+            <Label text="Detail Tantangan" styleClass="label-title"/>
+            <Label fx:id="detailJudulLabel" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+            <HBox spacing="30" alignment="TOP_LEFT" VBox.vgrow="ALWAYS">
+                <VBox spacing="10" HBox.hgrow="ALWAYS">
+                    <Label text="Deskripsi:" style="-fx-font-weight: bold;"/>
+                    <Label fx:id="detailDeskripsiLabel" wrapText="true"/>
+
+                    <Label text="Durasi Target:" style="-fx-font-weight: bold;"/>
+                    <Label fx:id="detailDurasiTargetLabel"/>
+
+                    <Label text="Target Untuk:" style="-fx-font-weight: bold;"/>
+                    <Label fx:id="detailTargetRoleLabel"/>
+                    
+                    <HBox spacing="10" alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
+                        <Button text="Mulai Tantangan" onAction="#handleMulaiTantangan" styleClass="button"/>
+                        <Button text="Kembali ke Daftar" onAction="#handleKembaliKeDaftar" styleClass="button"/>
+                    </HBox>
+                    <Label fx:id="detailMessageLabel" textFill="red" styleClass="label-message"/>
+                </VBox>
+
+                <ImageView fx:id="detailTantanganImageView" fitHeight="400.0" fitWidth="450.0" preserveRatio="true">
+                <image>
+                    <Image url="@/image/tantangan.png" />
+                </image>
+                    </ImageView>
+            </HBox>
+        </VBox>
+
+        <VBox fx:id="ongoingTantanganPane" alignment="TOP_CENTER" spacing="20" visible="false" styleClass="card-pane">
+            <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+            <Label text="Tantangan Sedang Berlangsung!" styleClass="label-title"/>
+            <Label fx:id="ongoingJudulLabel" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #4CAF50;"/>
+            <Label text="Waktu Berjalan:" style="-fx-font-size: 18px;"/>
+            <Label fx:id="timerLabel" style="-fx-font-size: 48px; -fx-font-weight: bold; -fx-text-fill: #3F51B5;"/>
+
+            <HBox alignment="CENTER" spacing="20" VBox.vgrow="ALWAYS">
+                <Button text="Selesai Tantangan" onAction="#handleSelesaiTantangan" styleClass="button"/>
+            </HBox>
+            <Label fx:id="ongoingMessageLabel" textFill="red" styleClass="label-message"/>
+        </VBox>
+
+        <VBox fx:id="confirmTantanganPane" alignment="TOP_LEFT" spacing="15" visible="false" styleClass="card-pane">
+            <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+            <Label text="Konfirmasi Penyelesaian Tantangan" styleClass="label-title"/>
+            <Label fx:id="confirmJudulLabel" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label text="Durasi Pengerjaan Aktual:" style="-fx-font-weight: bold;"/>
+            <Label fx:id="confirmDurasiActualLabel"/>
+            <Label text="Berikan Feedback/Catatan Pengalaman:" style="-fx-font-weight: bold;"/>
+            <TextArea fx:id="feedbackTextArea" promptText="Bagaimana pengalaman Anda?" wrapText="true" prefRowCount="5" styleClass="text-area"/>
+
+            <Label text="Bagikan progres ini ke orang tua/psikolog?" />
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <RadioButton fx:id="confirmShareYes" text="Ya"/>
+                <RadioButton fx:id="confirmShareNo" text="Tidak"/>
+            </HBox>
+
+            <HBox spacing="10" alignment="CENTER_RIGHT" VBox.vgrow="ALWAYS">
+                <Button text="Konfirmasi Selesai" onAction="#handleKonfirmasiSelesai" styleClass="button"/>
+                <Button text="Batalkan" onAction="#handleBatalkanKonfirmasi" styleClass="button"/>
+            </HBox>
+            <Label fx:id="confirmMessageLabel" textFill="red" styleClass="label-message"/>
+        </VBox>
+
+        <VBox fx:id="historyTantanganPane" alignment="TOP_LEFT" spacing="15" visible="false" styleClass="card-pane">
+            <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+            <Label text="Riwayat Progres Tantangan Anda" styleClass="label-title"/>
+            <TableView fx:id="tantanganHistoryTable" VBox.vgrow="ALWAYS" styleClass="table-view">
+                <columns>
+                    <TableColumn fx:id="historyNamaTantanganCol" text="Tantangan" prefWidth="180"/>
+                    <TableColumn fx:id="historyNamaRemajaCol" text="Remaja" prefWidth="100"/>
+                    <TableColumn fx:id="historyWaktuMulaiCol" text="Mulai" prefWidth="150"/>
+                    <TableColumn fx:id="historyWaktuSelesaiCol" text="Selesai" prefWidth="150"/>
+                    <TableColumn fx:id="historyDurasiCol" text="Durasi" prefWidth="120"/>
+                    <TableColumn fx:id="historySelesaiCol" text="Berhasil?" prefWidth="80"/>
+                    <TableColumn fx:id="historySharedCol" text="Dibagikan?" prefWidth="80"/>
+                </columns>
+            </TableView>
+            <HBox alignment="CENTER_RIGHT">
+                <Button text="Kembali ke Daftar Tantangan" onAction="#handleKembaliKeDaftar" styleClass="button"/>
+            </HBox>
+        </VBox>
+
+        <VBox fx:id="createTantanganPane" alignment="TOP_LEFT" spacing="15" visible="false" styleClass="card-pane">
+            <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+            <Label text="Buat Tantangan Baru" styleClass="label-title"/>
+
+            <GridPane hgap="15" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints prefWidth="120" hgrow="NEVER"/>
+                    <ColumnConstraints prefWidth="300" hgrow="ALWAYS"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints vgrow="NEVER"/>
+                    <RowConstraints vgrow="NEVER"/>
+                    <RowConstraints vgrow="NEVER"/>
+                    <RowConstraints vgrow="NEVER"/>
+                    <RowConstraints vgrow="NEVER"/>
+                </rowConstraints>
+
+                <Label text="Judul Tantangan:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="newTantanganJudulField" promptText="Misal: Minum Air 2L/Hari" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="Deskripsi:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextArea fx:id="newTantanganDeskripsiArea" promptText="Jelaskan tantangan ini..." wrapText="true" prefRowCount="3" styleClass="text-area" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label text="Durasi Target (Menit):" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <TextField fx:id="newTantanganDurasiMenitField" promptText="Misal: 30 (untuk 30 menit)" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                <Label text="Target Untuk:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <ComboBox fx:id="newTantanganTargetRoleCombo" promptText="Pilih Peran" styleClass="combo-box" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+            </GridPane>
+
+            <HBox spacing="10" alignment="CENTER_RIGHT" VBox.vgrow="ALWAYS">
+                <Button fx:id="simpanTantanganBaruButton" text="Simpan Tantangan Baru" onAction="#handleSimpanTantanganBaru" styleClass="button"/>
+                <Button fx:id="batalTantanganBaruButton" text="Batal" onAction="#handleKembaliKeDaftar" styleClass="button"/>
+            </HBox>
+            <Label fx:id="newTantanganMessageLabel" textFill="red" styleClass="label-message"/>
+        </VBox>
+
+    </StackPane>
+</AnchorPane>

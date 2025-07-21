@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardOrangTuaContentController">
+    <padding>
+        <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
+    </padding>
+    <children>
+        
+        <!-- Header -->
+        <HBox alignment="CENTER_LEFT" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Label fx:id="sapaanOrangTuaLabel" styleClass="label-title" text="Halo, Orang Tua!" />
+            <Region HBox.hgrow="ALWAYS" />
+            <ComboBox fx:id="anakComboBox" promptText="Pilih Anak" />
+            <Label fx:id="tanggalOrangTuaLabel" styleClass="dashboard-date" text="Memuat tanggal..." />
+        </HBox>
+
+        <!-- Pesan Label -->
+        <Label fx:id="pesanLabel" alignment="CENTER" styleClass="label-subtitle pesan-pilih-anak"
+               text="Silakan pilih anak untuk melihat data."
+               AnchorPane.topAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <tooltip>
+                <Tooltip text="Pilih nama anak dari menu dropdown di atas untuk memulai." />
+            </tooltip>
+            <font>
+                <Font size="22.0" />
+            </font>
+        </Label>
+
+        <!-- Konten Ringkasan dan Pie Chart -->
+        <HBox fx:id="contentHBox" disable="true" spacing="20.0"
+              AnchorPane.topAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="100.0">
+            <children>
+                <!-- Ringkasan Perkembangan -->
+                <VBox spacing="20.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label styleClass="label-subtitle" text="Ringkasan Perkembangan (Dibagikan):" />
+
+                        <!-- Kartu Status Mood -->
+                        <VBox spacing="10.0" styleClass="dashboard-card">
+                            <padding><Insets top="15" bottom="15" left="20" right="20" /></padding>
+                            <Label styleClass="card-title" text="Status Mood" />
+                            <Label fx:id="totalSharedMoodsLabel" styleClass="card-subtitle" text="Total Mood Dibagikan: 0" />
+                            <Label fx:id="lastSharedMoodLabel" styleClass="card-subtitle" text="Mood Terakhir: N/A" />
+                        </VBox>
+
+                        <!-- Kartu Aktivitas Jurnal -->
+                        <VBox spacing="10.0" styleClass="dashboard-card">
+                            <padding><Insets top="15" bottom="15" left="20" right="20" /></padding>
+                            <Label styleClass="card-title" text="Aktivitas Jurnal" />
+                            <Label fx:id="totalSharedJurnalsLabel" styleClass="card-subtitle" text="Total Jurnal Dibagikan: 0" />
+                            <Label fx:id="lastSharedJurnalLabel" styleClass="card-subtitle" text="Jurnal Terakhir: N/A" />
+                        </VBox>
+
+                        <!-- Kartu Progres Tantangan -->
+                        <VBox spacing="10.0" styleClass="dashboard-card">
+                            <padding><Insets top="15" bottom="15" left="20" right="20" /></padding>
+                            <Label styleClass="card-title" text="Progres Tantangan" />
+                            <Label fx:id="totalSharedTantanganLabel" styleClass="card-subtitle" text="Total Tantangan Dibagikan: 0" />
+                            <Label fx:id="lastSharedTantanganLabel" styleClass="card-subtitle" text="Tantangan Terakhir: N/A" />
+                        </VBox>
+                    </children>
+                </VBox>
+
+                <!-- Pie Chart Komposisi Mood -->
+                <VBox spacing="10.0" styleClass="dashboard-card" HBox.hgrow="ALWAYS">
+                    <padding><Insets top="15" bottom="15" left="20" right="20" /></padding>
+                    <Label styleClass="card-title" text="Komposisi Mood (Shared)" />
+                    <PieChart fx:id="moodCompositionChart" legendVisible="true" VBox.vgrow="ALWAYS" />
+                </VBox>
+            </children>
+        </HBox>
+
+        <!-- Tombol Insight -->
+        <HBox alignment="CENTER" spacing="10.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Button onAction="#handleLihatInsightDetail" styleClass="button primary-button" text="Lihat Insight Perkembangan Detail" />
+        </HBox>
+
+    </children>
+</AnchorPane>

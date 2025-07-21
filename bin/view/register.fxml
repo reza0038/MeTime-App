@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegisterController">
+    <ImageView fx:id="backgroundRegister" fitHeight="1080.0" fitWidth="1920.0" preserveRatio="false">
+        <image>
+            <Image url="@/Image/Register.png" />
+        </image>
+    </ImageView>
+
+    <TextField fx:id="usernameField" layoutX="592.0" layoutY="322.0" prefHeight="61.71" prefWidth="437.66" promptText="Masukkan Username" styleClass="textfield-style" />
+    <TextField fx:id="emailField" layoutX="592.0" layoutY="399.0" prefHeight="61.71" prefWidth="437.66" promptText="Masukkan Email" styleClass="textfield-style" />
+    <PasswordField fx:id="passwordField" layoutX="592.0" layoutY="477.0" prefHeight="61.71" prefWidth="437.66" promptText="Masukkan Password" styleClass="textfield-style" />
+    <PasswordField fx:id="confirmPasswordField" layoutX="592.0" layoutY="556.0" prefHeight="61.71" prefWidth="437.66" promptText="Konfirmasi Password" styleClass="textfield-style" />
+
+    <Button layoutX="586.0" layoutY="690.0" onAction="#handleRegister" prefHeight="62.0" prefWidth="450.0" styleClass="login-button" text="DAFTAR" />
+    <Hyperlink layoutX="592.0" layoutY="759.0" onAction="#handleBackToLogin" styleClass="hyperlink-daftar" text="Kembali ke Login" />
+
+    <Label fx:id="messageLabel" layoutX="797.0" layoutY="643.0" textFill="red">
+        <font>
+            <Font size="14.0" />
+        </font>
+    </Label>
+</AnchorPane>

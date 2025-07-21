@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardOrangTuaController"
+            style="-fx-background-image: url('Image/background_global.jpg'); -fx-background-size: cover; -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-color: linear-gradient(to bottom right, rgba(230,240,255,0.4), rgba(200,220,255,0.4));"> <padding><Insets bottom="30.0" left="40.0" right="40.0" top="30.0"/></padding>
+    <children>
+
+        <HBox alignment="CENTER_LEFT" spacing="10.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="30.0">
+            <Label fx:id="sapaanOrangTuaLabel" styleClass="dashboard-title" text="Halo, Orang Tua!"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="tanggalOrangTuaLabel" styleClass="dashboard-date" text="Senin, 14 Juli 2025"/>
+        </HBox>
+
+        <VBox spacing="25.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="100.0" AnchorPane.bottomAnchor="150.0">
+            
+            <Label text="Ringkasan Perkembangan Remaja (Dibagikan):" styleClass="label-subtitle"/>
+
+            <VBox styleClass="dashboard-card" spacing="10.0">
+                <padding><Insets all="20"/></padding>
+                <Label styleClass="card-title" text="Status Mood"/>
+                <Label fx:id="totalSharedMoodsLabel" styleClass="card-subtitle" text="Total Mood Dibagikan: 0"/>
+                <Label fx:id="lastSharedMoodLabel" styleClass="card-subtitle" text="Mood Terakhir: N/A"/>
+            </VBox>
+
+            <VBox styleClass="dashboard-card" spacing="10.0">
+                <padding><Insets all="20"/></padding>
+                <Label styleClass="card-title" text="Aktivitas Jurnal"/>
+                <Label fx:id="totalSharedJurnalsLabel" styleClass="card-subtitle" text="Total Jurnal Dibagikan: 0"/>
+                <Label fx:id="lastSharedJurnalLabel" styleClass="card-subtitle" text="Jurnal Terakhir: N/A"/>
+            </VBox>
+
+            <VBox styleClass="dashboard-card" spacing="10.0">
+                <padding><Insets all="20"/></padding>
+                <Label styleClass="card-title" text="Progres Tantangan"/>
+                <Label fx:id="totalSharedTantanganLabel" styleClass="card-subtitle" text="Total Tantangan Dibagikan: 0"/>
+                <Label fx:id="lastSharedTantanganLabel" styleClass="card-subtitle" text="Tantangan Terakhir: N/A"/>
+            </VBox>
+
+            <Label fx:id="pesanMotivasiOrangTuaLabel" styleClass="quote-text" text="Pantau terus perkembangan remaja Anda." VBox.vgrow="ALWAYS"/>
+
+        </VBox>
+
+        <HBox alignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="40.0">
+            <Button onAction="#handleLihatInsightDetail" styleClass="button primary-button" text="Lihat Insight Perkembangan Detail"/>
+        </HBox>
+
+    </children>
+</AnchorPane>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.StackedAreaChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox spacing="20.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardHomeViewController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <VBox spacing="20.0" HBox.hgrow="ALWAYS">
+        <children>
+            <VBox styleClass="card" VBox.vgrow="ALWAYS">
+                <children>
+                    <Label styleClass="card-title" text="Perkembangan Mood (4 Minggu Terakhir)" />
+                    <StackedAreaChart fx:id="moodDevelopmentAreaChart" legendVisible="true" VBox.vgrow="ALWAYS">
+                        <xAxis><CategoryAxis side="BOTTOM" /></xAxis>
+                        <yAxis><NumberAxis side="LEFT" /></yAxis>
+                    </StackedAreaChart>
+                </children>
+            </VBox>
+            <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+                <children>
+                    <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                        <children>
+                            <Label styleClass="card-title" text="Komposisi Perasaanmu" />
+                            <PieChart fx:id="moodCompositionChart" legendVisible="true" VBox.vgrow="ALWAYS" />
+                        </children>
+                    </VBox>
+                    <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                        <children>
+                            <Label styleClass="card-title" text="Hari Paling Aktif Kamu" />
+                            <BarChart fx:id="activityFrequencyChart" legendVisible="false" VBox.vgrow="ALWAYS">
+                                <xAxis><CategoryAxis side="BOTTOM" /></xAxis>
+                                <yAxis><NumberAxis side="LEFT" /></yAxis>
+                            </BarChart>
+                        </children>
+                    </VBox>
+                </children>
+            </HBox>
+        </children>
+    </VBox>
+
+    <VBox prefWidth="350.0" spacing="20.0">
+        <children>
+            <VBox spacing="5.0" styleClass="card">
+                <children>
+                    <Label fx:id="sapaanLabel" styleClass="label-title" text="Selamat Datang!" />
+                    <Label fx:id="pesanMotivasiLabel" text="Hari yang baru untuk awal yang baru." wrapText="true" />
+                </children>
+            </VBox>
+            <VBox spacing="10.0" styleClass="card">
+                <children>
+                    <Label styleClass="label-subtitle" text="Fokus Hari Ini" />
+                    <Label fx:id="tantanganLabel" text="Tantangan: Lakukan olahraga ringan 15 menit." wrapText="true" />
+                    <HBox spacing="10.0">
+                        <children>
+                            <Button onAction="#handleBukaMoodTracker" styleClass="button" text="Catat Mood" />
+                            <Button onAction="#handleBukaJurnal" styleClass="button" text="Tulis Jurnal" />
+                        </children>
+                    </HBox>
+                </children>
+            </VBox>
+            <VBox spacing="5.0" styleClass="card">
+                <children>
+                    <Label styleClass="label-subtitle" text="Saran Cerdas" />
+                    <Label fx:id="saranLabel" text="Merasa cemas? Coba ambil waktu 5 menit untuk latihan pernapasan dalam." wrapText="true" />
+                </children>
+            </VBox>
+            <VBox spacing="10.0" styleClass="card">
+                <children>
+                    <Label styleClass="label-subtitle" text="Aktivitas Terkini" />
+                    <Label fx:id="lastMoodLabel" text="Mood Terakhir: -" />
+                    <Label fx:id="lastMoodTimeLabel" style="-fx-font-style: italic; -fx-text-fill: #616161;" text="Belum ada entri." />
+                    <Label fx:id="totalMoodsLabel" text="Total Entri Mood: 0" />
+                    <Label fx:id="totalJurnalsLabel" text="Total Entri Jurnal: 0" />
+                </children>
+            </VBox>
+        </children>
+    </VBox>
+</HBox>

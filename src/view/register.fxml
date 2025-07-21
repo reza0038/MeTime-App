@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane stylesheets="@../style.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegisterController">
+   
+          <ImageView fx:id="backgroundRegister" fitHeight="1080.0" fitWidth="1920.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="false">
+        <image>
+            <Image url="@../image/Register.png" />
+        </image>
+    </ImageView>
+
+    <VBox alignment="CENTER" maxWidth="450.0" pickOnBounds="false" prefHeight="1080.0" prefWidth="520.0" spacing="30.0" styleClass="form-container" StackPane.alignment="CENTER">
+        <children>
+      
+            <TextField fx:id="usernameField" prefHeight="50.0" promptText="Masukkan Username" styleClass="textfield-style" />
+            <TextField fx:id="emailField" prefHeight="50.0" promptText="Masukkan Email" styleClass="textfield-style" />
+            <PasswordField fx:id="passwordField" prefHeight="50.0" promptText="Masukkan Password" styleClass="textfield-style" />
+            <PasswordField fx:id="confirmPasswordField" prefHeight="50.0" promptText="Konfirmasi Password" styleClass="textfield-style" />
+            
+            <Label fx:id="messageLabel" style="-fx-text-fill: red; -fx-font-weight: bold;" />
+
+            <Button maxWidth="Infinity" onAction="#handleRegister" prefHeight="50.0" styleClass="login-button" text="DAFTAR" />
+            <Hyperlink onAction="#handleBackToLogin" styleClass="hyperlink-daftar" text="Kembali ke Login" />
+        </children>
+      <padding>
+         <Insets bottom="70.0" left="54.0" right="-27.0" top="61.0" />
+      </padding>
+    </VBox>
+</StackPane>

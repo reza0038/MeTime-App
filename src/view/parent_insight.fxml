@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="900.0" prefWidth="850.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InsightPerkembanganController">
+   <padding><Insets bottom="20.0" left="20.0" right="20.0" top="20.0" /></padding>
+   <children>
+      <Label layoutX="20.0" layoutY="20.0" styleClass="label-title" text="Insight Perkembangan Anak (Data Dibagikan)" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      
+      <VBox layoutX="20.0" layoutY="70.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+         <Label text="Pilih Rentang Waktu:" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+         <HBox spacing="10.0" alignment="CENTER_LEFT">
+            <ComboBox fx:id="timeRangeComboBox" prefWidth="150.0" promptText="Pilih Rentang" styleClass="combo-box" />
+            <Label text="Dari:" />
+            <DatePicker fx:id="startDatePicker" prefWidth="120.0" styleClass="date-picker" />
+            <Label text="Sampai:" />
+            <DatePicker fx:id="endDatePicker" prefWidth="120.0" styleClass="date-picker" />
+         </HBox>
+         <Label fx:id="insightMessageLabel" textFill="#555555" style="-fx-font-style: italic;" styleClass="label-message" />
+      </VBox>
+      
+      <ScrollPane fitToWidth="true" styleClass="no-border-scroll-pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="160.0">
+         <content>
+            <VBox spacing="30.0">
+               <padding><Insets top="10.0" /></padding>
+               <children>
+                  <VBox spacing="5.0">
+                     <Label text="Riwayat Mood (Hanya yang Dibagikan):" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+                     <TableView fx:id="moodTableView" prefHeight="200.0" VBox.vgrow="ALWAYS" styleClass="table-view">
+                        <columns>
+                           <TableColumn fx:id="moodDateColumn" text="Tanggal" prefWidth="150.0"/>
+                           <TableColumn fx:id="moodTypeColumn" text="Suasana Hati" prefWidth="120.0"/>
+                           <TableColumn fx:id="moodNoteColumn" text="Catatan" prefWidth="350.0"/>
+                           <TableColumn fx:id="moodSharedColumn" text="Dibagikan" prefWidth="80.0"/>
+                        </columns>
+                        <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/></columnResizePolicy>
+                     </TableView>
+                  </VBox>
+                  
+                  <VBox spacing="5.0">
+                     <Label text="Riwayat Jurnal (Hanya yang Dibagikan):" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+                     <TableView fx:id="jurnalTableView" prefHeight="200.0" VBox.vgrow="ALWAYS" styleClass="table-view">
+                        <columns>
+                           <TableColumn fx:id="jurnalDateColumn" text="Tanggal" prefWidth="150.0"/>
+                           <TableColumn fx:id="jurnalContentColumn" text="Isi Jurnal" prefWidth="550.0"/>
+                           <TableColumn fx:id="jurnalSharedColumn" text="Dibagikan" prefWidth="80.0"/>
+                        </columns>
+                        <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/></columnResizePolicy>
+                     </TableView>
+                  </VBox>
+                  
+                  <VBox spacing="5.0">
+                     <Label text="Riwayat Tantangan (Hanya yang Dibagikan):" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+                     <TableView fx:id="tantanganTableView" prefHeight="200.0" VBox.vgrow="ALWAYS" styleClass="table-view">
+                        <columns>
+                           <TableColumn fx:id="tantanganNamaColumn" text="Tantangan" prefWidth="150.0"/>
+                           <TableColumn fx:id="tantanganMulaiColumn" text="Waktu Mulai" prefWidth="150.0"/>
+                           <TableColumn fx:id="tantanganSelesaiColumn" text="Waktu Selesai" prefWidth="150.0"/>
+                           <TableColumn fx:id="tantanganDurasiColumn" text="Durasi" prefWidth="100.0"/>
+                           <TableColumn fx:id="tantanganStatusColumn" text="Status" prefWidth="80.0"/>
+                           <TableColumn fx:id="tantanganSharedColumn" text="Dibagikan" prefWidth="80.0"/>
+                        </columns>
+                        <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/></columnResizePolicy>
+                     </TableView>
+                  </VBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

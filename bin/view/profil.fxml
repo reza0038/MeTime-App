@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.ProfilController" stylesheets="@../style.css"
+            style="-fx-padding: 20 30 20 30;">
+
+    <Label styleClass="label-title" text="Profil Saya" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+
+    <ScrollPane fitToWidth="true" styleClass="no-border-scroll-pane"
+                AnchorPane.topAnchor="50.0" AnchorPane.bottomAnchor="0.0"
+                AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+
+        <content>
+            <VBox spacing="15.0">
+                <padding><Insets top="10" right="5" bottom="10" left="0"/></padding>
+
+                <Label text="Informasi Pribadi &amp; Kontak:" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+                <GridPane hgap="15.0" vgap="10.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="NEVER" prefWidth="180.0" />
+                        <ColumnConstraints hgrow="ALWAYS" />
+                    </columnConstraints>
+                    
+                    <Label text="Username:" GridPane.rowIndex="0" />
+                    <Label fx:id="usernameLabel" style="-fx-font-weight: bold;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                    <Label text="Nama Lengkap:" GridPane.rowIndex="1" />
+                    <TextField fx:id="namaLengkapField" promptText="Masukkan nama lengkap" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                    <Label text="Tanggal Lahir:" GridPane.rowIndex="2" />
+                    <DatePicker fx:id="tanggalLahirPicker" promptText="Pilih tanggal" styleClass="date-picker" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                    <Label text="Jenis Kelamin:" GridPane.rowIndex="3" />
+                    <HBox spacing="15.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <RadioButton fx:id="lakiLakiRadio" text="Laki-laki" />
+                        <RadioButton fx:id="perempuanRadio" text="Perempuan" />
+                    </HBox>
+                    
+                    <Label text="Email:" GridPane.rowIndex="4" />
+                    <TextField fx:id="emailField" promptText="Masukkan alamat email" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                    <Label text="Nomor Telepon:" GridPane.rowIndex="5" />
+                    <TextField fx:id="teleponField" promptText="Masukkan nomor telepon" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                </GridPane>
+
+                <Label text="Hubungkan dengan Wali:" style="-fx-font-weight: bold; -fx-font-size: 16px;">
+                     <VBox.margin><Insets top="20.0"/></VBox.margin>
+                </Label>
+                <GridPane hgap="15.0" vgap="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="NEVER" prefWidth="180.0" />
+                        <ColumnConstraints hgrow="ALWAYS" />
+                     </columnConstraints>
+                    <Label text="Username Wali:" GridPane.rowIndex="0" />
+                    <TextField fx:id="usernameWaliField" promptText="Masukkan username akun orang tua" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                </GridPane>
+
+                <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                     <VBox.margin><Insets top="10.0"/></VBox.margin>
+                    <Button onAction="#handleSimpanProfil" styleClass="button" text="Simpan Profil" />
+                    <Button onAction="#handleResetForm" styleClass="button" text="Reset Form" />
+                </HBox>
+                
+                <Separator prefWidth="200.0">
+                     <VBox.margin><Insets top="20.0" bottom="10.0" /></VBox.margin>
+                </Separator>
+
+                <Label text="Ganti Kata Sandi:" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+                <GridPane hgap="15.0" vgap="10.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="NEVER" prefWidth="180.0" />
+                        <ColumnConstraints hgrow="ALWAYS" />
+                    </columnConstraints>
+                    
+                    <Label text="Kata Sandi Saat Ini:" GridPane.rowIndex="0" />
+                    <PasswordField fx:id="passwordLamaField" promptText="Masukkan kata sandi saat ini" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                    <Label text="Kata Sandi Baru:" GridPane.rowIndex="1" />
+                    <PasswordField fx:id="passwordBaruField" promptText="Masukkan kata sandi baru" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                    <Label text="Konfirmasi Kata Sandi Baru:" GridPane.rowIndex="2" />
+                    <PasswordField fx:id="konfirmasiPasswordBaruField" promptText="Ketik ulang kata sandi baru" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                </GridPane>
+                
+                <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                     <VBox.margin><Insets top="10.0"/></VBox.margin>
+                    <Button onAction="#handleGantiPassword" styleClass="button" text="Ganti Kata Sandi" />
+                </HBox>
+                
+                <Label fx:id="messageLabel" styleClass="label-message" textFill="RED" />
+            </VBox>
+        </content>
+    </ScrollPane>
+</AnchorPane>

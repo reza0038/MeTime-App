@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefWidth="774.0" prefHeight="728.0" spacing="15.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.JurnalHarianController"
+      style="-fx-background-image: url('Image/background_global.jpg'); -fx-background-size: cover; -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-color: linear-gradient(to bottom right, rgba(255,255,255,0.4), rgba(240,240,255,0.4));">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <Label text="Jurnal Harian" styleClass="label-title" />
+
+    <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+            <Label text="Entri Jurnal Anda:" styleClass="label-subtitle"/>
+            <ListView fx:id="jurnalListView" VBox.vgrow="ALWAYS" styleClass="list-view"/>
+        </VBox>
+
+        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+            <Label fx:id="tanggalDetailLabel" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
+            <TextArea fx:id="isiJurnalArea" promptText="Tuliskan isi jurnal Anda di sini..." wrapText="true" prefRowCount="15" VBox.vgrow="ALWAYS" styleClass="text-area"/>
+
+            <Label text="Bagikan entri ini?" style="-fx-font-weight: bold;"/>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <children> <RadioButton fx:id="shareYes" text="Ya" styleClass="radio-button">
+                        <toggleGroup>
+                            <ToggleGroup fx:id="shareToggleGroup" /> </toggleGroup>
+                    </RadioButton>
+                    <RadioButton fx:id="shareNo" selected="true" text="Tidak" styleClass="radio-button" toggleGroup="$shareToggleGroup" />
+                </children>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button onAction="#handleBuatJurnalBaru" styleClass="button" text="Jurnal Baru" />
+                <Button onAction="#handleSimpan" styleClass="button primary-button" text="Simpan" />
+                <Button onAction="#handleHapus" styleClass="button secondary-button" text="Hapus" />
+            </HBox>
+            
+            <Label fx:id="messageLabel" textFill="red" styleClass="label-message"/>
+        </VBox>
+    </HBox>
+</VBox>
